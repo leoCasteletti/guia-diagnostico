@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Guia de Diagnóstico</title>
+    <meta name="description" content="Guia de consulta rápida para o suporte de TI.">
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" href="icone.svg" type="image/svg+xml">
+    <link href="vendor/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+<header class="topo">
+    <div class="container">
+        <h1 class="h4 mb-1">Guia de Diagnóstico</h1>
+        <p class="mb-3">Sintoma, causa provável e o que fazer, para o primeiro atendimento do suporte.</p>
+        <input id="busca" type="search" class="form-control form-control-lg" placeholder="Descreva o problema: impressora, VPN, SU53, sem internet..." autocomplete="off">
+        <div id="familias" class="familias mt-3"></div>
+    </div>
+</header>
+
+<main class="container py-4">
+    <div class="row g-4">
+        <div class="col-lg-5">
+            <p id="contador" class="text-secondary small mb-2"></p>
+            <div id="lista" class="list-group"></div>
+        </div>
+        <div class="col-lg-7">
+            <article id="detalhe" class="detalhe card card-body">
+                <p class="text-secondary mb-0">Escolha um problema na lista.</p>
+            </article>
+        </div>
+    </div>
+</main>
+
+<template id="modelo-detalhe">
+    <span class="badge familia-badge mb-2"></span>
+    <h2 class="h4 titulo"></h2>
+    <h3 class="h6 mt-3">Sintomas</h3>
+    <ul class="sintomas"></ul>
+    <h3 class="h6">Causas prováveis</h3>
+    <ul class="causas"></ul>
+    <h3 class="h6">O que fazer</h3>
+    <ol class="passos"></ol>
+    <div class="alert alert-warning escalar mb-3"></div>
+    <label class="form-label h6" for="anotacao">Minhas anotações <small class="text-secondary fw-normal">ficam só neste navegador</small></label>
+    <textarea id="anotacao" class="form-control" rows="3" placeholder="O que resolveu da última vez?"></textarea>
+</template>
+
+<script src="js/app.js"></script>
+</body>
+</html>

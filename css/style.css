@@ -1,0 +1,68 @@
+body {
+    background: #f4f5f7;
+}
+
+.topo {
+    background: #1f2933;
+    color: #fff;
+    padding: 2rem 0 1.5rem;
+}
+
+.topo p {
+    color: #b8c2cc;
+}
+
+.familias {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+}
+
+.familias .btn {
+    color: #d9e2ec;
+    border: 1px solid #52606d;
+    border-radius: 999px;
+}
+
+.familias .btn:hover,
+.familias .btn.ativo {
+    background: #4fd1a5;
+    border-color: #4fd1a5;
+    color: #102a43;
+}
+
+.list-group-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.list-group-item small {
+    color: #7b8794;
+    font-size: .75rem;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+}
+
+.list-group-item.active {
+    background: #1f2933;
+    border-color: #1f2933;
+}
+
+.list-group-item.active small {
+    color: #4fd1a5;
+}
+
+.detalhe {
+    position: sticky;
+    top: 1rem;
+}
+
+.familia-badge {
+    align-self: flex-start;
+    background: #e3f8f1;
+    color: #0b6b4f;
+}
+
+.detalhe li {
+    margin-bottom: .35rem;
+}

@@ -1,0 +1,9 @@
+{
+    "name": "Guia de Diagnóstico",
+    "short_name": "Diagnóstico",
+    "start_url": "./",
+    "display": "standalone",
+    "background_color": "#f4f5f7",
+    "theme_color": "#1f2933",
+    "icons": [{ "src": "icone.svg", "sizes": "any", "type": "image/svg+xml" }]
+}

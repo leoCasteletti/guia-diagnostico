@@ -1,0 +1,173 @@
+[
+  {
+    "id": "impressora-fila",
+    "familia": "Impressão",
+    "titulo": "Impressão não sai e fica parada na fila",
+    "sintomas": ["documento fica em 'Spooling' ou 'Erro'", "impressora aparece offline", "outros usuários também não imprimem"],
+    "causas": ["Serviço de spooler travado", "Impressora sem rede ou com IP alterado", "Driver incorreto após atualização"],
+    "passos": [
+      "Confirmar no painel da impressora se ela está ligada, sem papel preso e com rede",
+      "Abrir a página de configuração da impressora pelo IP. Se não abrir, o problema é de rede",
+      "Limpar a fila: parar o serviço Spooler, apagar C:\\Windows\\System32\\spool\\PRINTERS e iniciar o serviço",
+      "Se só um usuário é afetado, remover e adicionar a impressora de novo",
+      "Se todos são afetados, verificar o servidor de impressão"
+    ],
+    "escalar": "Hardware com erro no painel ou atolamento recorrente: acionar o fornecedor do contrato de impressão."
+  },
+  {
+    "id": "rede-sem-internet",
+    "familia": "Rede",
+    "titulo": "Computador conectado, mas sem internet",
+    "sintomas": ["ícone de rede com globo ou exclamação", "sites não abrem, mas a rede interna funciona", "erro DNS_PROBE"],
+    "causas": ["IP via APIPA (169.254.x.x) por falha de DHCP", "DNS não responde", "Proxy configurado errado"],
+    "passos": [
+      "Rodar ipconfig /all e conferir IP, gateway e DNS",
+      "IP 169.254.x.x: testar outro ponto de rede ou cabo; depois ipconfig /release e /renew",
+      "ping no gateway. Se responde, ping 8.8.8.8. Se responde, o problema é DNS",
+      "Testar nslookup com um site conhecido",
+      "Conferir proxy em Configurações > Rede > Proxy"
+    ],
+    "escalar": "Vários usuários do mesmo setor afetados: provável problema de switch ou DHCP. Acionar a equipe de rede."
+  },
+  {
+    "id": "wifi-cai",
+    "familia": "Rede",
+    "titulo": "Wi-Fi conecta e cai várias vezes",
+    "sintomas": ["queda a cada poucos minutos", "sinal fraco em uma área específica", "acontece só no notebook"],
+    "causas": ["Economia de energia desligando a placa", "Driver Wi-Fi desatualizado", "Área com cobertura ruim"],
+    "passos": [
+      "Ver se outros aparelhos no mesmo local também caem",
+      "Desmarcar 'Permitir que o computador desligue este dispositivo' na placa Wi-Fi",
+      "Atualizar o driver pelo site do fabricante",
+      "Esquecer a rede e conectar de novo"
+    ],
+    "escalar": "Problema localizado em um ponto do prédio: registrar o local para análise de cobertura."
+  },
+  {
+    "id": "vpn-nao-conecta",
+    "familia": "Acesso remoto",
+    "titulo": "VPN não conecta",
+    "sintomas": ["erro de autenticação", "fica em 'conectando'", "conecta, mas não acessa sistemas internos"],
+    "causas": ["Senha expirada ou conta bloqueada", "Internet local instável", "Certificado ou cliente desatualizado"],
+    "passos": [
+      "Confirmar que a internet da casa funciona sem a VPN",
+      "Testar login em outro serviço com a mesma senha para descartar senha expirada",
+      "Conferir data e hora do computador. Diferença grande quebra certificados",
+      "Reinstalar ou atualizar o cliente de VPN",
+      "Se conecta mas não acessa nada, testar pelo IP do servidor para descartar DNS"
+    ],
+    "escalar": "Conta bloqueada ou certificado expirado: encaminhar para a equipe de segurança."
+  },
+  {
+    "id": "senha-bloqueada",
+    "familia": "Acesso",
+    "titulo": "Usuário bloqueado ou senha expirada",
+    "sintomas": ["'A conta está bloqueada'", "pede troca de senha e não aceita", "bloqueia de novo logo após desbloquear"],
+    "causas": ["Tentativas erradas", "Senha antiga salva no celular ou em outro computador", "Senha nova fora da política"],
+    "passos": [
+      "Confirmar a identidade do usuário antes de qualquer desbloqueio",
+      "Desbloquear e orientar a troca de senha",
+      "Se bloqueia de novo, procurar dispositivos com a senha antiga: e-mail no celular, unidades mapeadas, Wi-Fi corporativo",
+      "Explicar a política de senha: tamanho, complexidade e histórico"
+    ],
+    "escalar": "Muitos bloqueios sem causa aparente podem indicar tentativa de acesso indevido: avisar a segurança."
+  },
+  {
+    "id": "sap-gui-login",
+    "familia": "SAP",
+    "titulo": "SAP GUI não abre ou não faz login",
+    "sintomas": ["'Partner not reached'", "usuário bloqueado no SAP", "entrada da conexão some do SAP Logon"],
+    "causas": ["Sem rede para o servidor SAP", "Usuário bloqueado por tentativas", "Arquivo de conexões desatualizado"],
+    "passos": [
+      "Conferir se outros usuários acessam o mesmo ambiente",
+      "Testar ping no servidor de aplicação",
+      "Erro de usuário bloqueado: o desbloqueio é feito pela equipe de acessos (SU01)",
+      "Entrada sumida: restaurar o arquivo de conexões padrão da empresa"
+    ],
+    "escalar": "Falta de autorização (mensagem com objeto de autorização): abrir chamado para a equipe de acessos com a transação e o print do SU53."
+  },
+  {
+    "id": "sap-sem-autorizacao",
+    "familia": "SAP",
+    "titulo": "Sem autorização para a transação no SAP",
+    "sintomas": ["'Sem autorização para a transação'", "botão ou campo desabilitado", "relatório volta vazio para um usuário e cheio para outro"],
+    "causas": ["Função não atribuída ao usuário", "Falta de valor em um objeto de autorização (empresa, centro, tipo de documento)", "Função expirada"],
+    "passos": [
+      "Pedir ao usuário que rode a SU53 logo após o erro e envie o print",
+      "Conferir se a função foi aprovada pelo gestor da área",
+      "Comparar com um colega do mesmo cargo que tenha o acesso"
+    ],
+    "escalar": "Encaminhar o print da SU53 para a equipe de acessos. Nunca copiar o perfil de outro usuário sem aprovação."
+  },
+  {
+    "id": "outlook-nao-sincroniza",
+    "familia": "E-mail",
+    "titulo": "Outlook não recebe e-mails",
+    "sintomas": ["'Desconectado' na barra inferior", "e-mails chegam no webmail mas não no Outlook", "pasta Caixa de Entrada parada"],
+    "causas": ["Perfil corrompido", "Arquivo OST muito grande", "Senha alterada e não atualizada"],
+    "passos": [
+      "Conferir se o webmail recebe normalmente",
+      "Verificar se está em modo 'Trabalhar Offline'",
+      "Fechar o Outlook e reabrir com outlook.exe /safe",
+      "Criar um perfil novo pelo Painel de Controle > Email"
+    ],
+    "escalar": "Caixa cheia ou e-mails não chegando nem no webmail: acionar o administrador de e-mail."
+  },
+  {
+    "id": "pc-lento",
+    "familia": "Desempenho",
+    "titulo": "Computador muito lento",
+    "sintomas": ["demora para abrir programas", "disco em 100% no Gerenciador de Tarefas", "lento desde uma atualização"],
+    "causas": ["Disco mecânico ou SSD com defeito", "Memória insuficiente", "Atualização ou antivírus rodando em segundo plano"],
+    "passos": [
+      "Abrir o Gerenciador de Tarefas e ver o que está no topo de CPU, memória e disco",
+      "Conferir espaço livre no disco C:",
+      "Verificar a saúde do disco (SMART)",
+      "Desativar programas desnecessários na inicialização",
+      "Se a máquina tem HD mecânico, avaliar troca por SSD"
+    ],
+    "escalar": "Disco com erro de SMART: fazer backup imediato e trocar o disco."
+  },
+  {
+    "id": "monitor-sem-imagem",
+    "familia": "Hardware",
+    "titulo": "Monitor sem imagem",
+    "sintomas": ["luz do monitor piscando", "'Sem sinal'", "computador liga mas a tela fica preta"],
+    "causas": ["Cabo solto ou na saída errada (placa de vídeo x onboard)", "Entrada errada selecionada no monitor", "Memória mal encaixada"],
+    "passos": [
+      "Conferir cabo de energia e de vídeo nas duas pontas",
+      "Selecionar a entrada correta no menu do monitor",
+      "Testar com outro cabo e outro monitor",
+      "Se o computador apita ao ligar, reencaixar a memória"
+    ],
+    "escalar": "Funciona em outro monitor: trocar o monitor. Não funciona em nenhum: levar o computador para bancada."
+  },
+  {
+    "id": "pasta-rede",
+    "familia": "Arquivos",
+    "titulo": "Sem acesso à pasta da rede",
+    "sintomas": ["'Acesso negado'", "unidade mapeada com X vermelho", "pasta abre para um colega e não para o usuário"],
+    "causas": ["Usuário fora do grupo de permissão", "Credencial antiga salva", "Servidor de arquivos fora do ar"],
+    "passos": [
+      "Testar o acesso pelo caminho completo \\\\servidor\\pasta",
+      "Remover credenciais antigas no Gerenciador de Credenciais do Windows",
+      "Conferir se o usuário está no grupo que dá acesso à pasta",
+      "Fazer logoff e login para atualizar os grupos"
+    ],
+    "escalar": "Inclusão em grupo de acesso exige aprovação do dono da pasta."
+  },
+  {
+    "id": "teams-audio",
+    "familia": "Comunicação",
+    "titulo": "Sem áudio ou microfone em reuniões",
+    "sintomas": ["ninguém escuta o usuário", "usuário não escuta ninguém", "funciona em um aplicativo e não em outro"],
+    "causas": ["Dispositivo errado selecionado no aplicativo", "Microfone bloqueado na privacidade do Windows", "Headset com defeito"],
+    "passos": [
+      "Nas configurações do aplicativo de reunião, escolher o headset como entrada e saída",
+      "Conferir Configurações > Privacidade > Microfone",
+      "Testar o headset em outra porta USB ou outro computador",
+      "Fazer uma chamada de teste"
+    ],
+    "escalar": "Headset com defeito: trocar pelo estoque."
+  }
+]
